@@ -4,7 +4,9 @@ void reverse(int arr[], int n){
     int start=0;
     int end=n-1;
     while(start<=end){
+        int temp=arr[start];
         arr[start]=arr[end];
+        arr[end]=temp;
         start++;
         end--;
     }
@@ -25,5 +27,8 @@ int main(){
         cout<<"The value at the index "<< i << " is : ";
         cin>>arr[i];
     }
+    printArray(arr,size);
+    reverse(arr,size);
+    printArray(arr,size);
     return 0;
 }
