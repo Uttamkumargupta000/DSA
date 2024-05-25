@@ -28,3 +28,4 @@ int main(){
     cout<<findUnique(arr,size)<<endl;
     printArray(arr,size);
     return 0;
+}
