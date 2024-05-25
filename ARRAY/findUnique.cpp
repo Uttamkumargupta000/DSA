@@ -1,3 +1,4 @@
+
 #include<iostream>
 using namespace std;
 int findUnique(int arr[], int n){
@@ -27,4 +28,3 @@ int main(){
     cout<<findUnique(arr,size)<<endl;
     printArray(arr,size);
     return 0;
-}
