@@ -57,8 +57,8 @@ int main(){
     int size;
     cout<<"Enter the value of size : ";
     cin>>size;
-
-    int arr[100];
+ 
+    int arr[10];
     //taking input to array
     for(int i=0;i<size;i++){
         cout<<"The value at the index "<<i<< " is : ";
