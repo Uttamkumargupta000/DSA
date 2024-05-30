@@ -1,4 +1,4 @@
- #include <bits/stdc++.h> 
+#include <bits/stdc++.h> 
 using namespace std;
 
 void printArray(int arr[], int n){
@@ -36,7 +36,7 @@ int aggresiveCow(int arr[], int n, int k){
     int e=maxi;
     int ans=-1;
     int mid = s+(e-s)/2;
-    while(s<e){
+    while(s<=e){
         if(isPossible(arr,n,k,mid)){
             ans=mid;
             s=mid+1;
@@ -60,6 +60,8 @@ int main(){
         cout<<"The value at the index "<<i<< " is : ";
         cin>>arr[i];
     }
+
+    printArray(arr,size);
     cout<<"the value of aggresive cows is : "<<aggresiveCow(arr,size,2)<<endl;
 
     printArray(arr,size);
