@@ -1,28 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool isSorted(int arr[], int size){
-    if(size==0 || size==1){
-        return true;
+bool BinarySearch(int arr[], int s, int e, int key){
+    if(s>e){
+        return 0;
     }
-    if(arr[0]>arr[1]){
-        return false;
+
+    int mid= s+(e-s)/2;
+
+    if(arr[mid]==key)
+        return 1;
+    
+    if(arr[mid]<key){
+        return BinarySearch(arr,mid+1,e,key);
     }
     else{
-        return isSorted(arr+1,size-1);
+        return BinarySearch(arr,s,mid-1,key);
     }
 }
+
 int main(){
     
-    int arr[5]={2,3,4,5,6};
-    int size=5;
+    int arr[6]={2,4,6,10,14,18};
+    int size=6;
+    int key=6;
 
-    bool ans= isSorted(arr,size);
+    bool ans= BinarySearch(arr,0,size-1, key);
     if(ans){
-        cout<<"Array is sorted" <<endl;
+        cout<<"Key is present " <<endl;
     }
     else{
-        cout<<"Array is not sorted"<<endl;
+        cout<<"Key is not present "<<endl;
     }
     return 0;
 }
