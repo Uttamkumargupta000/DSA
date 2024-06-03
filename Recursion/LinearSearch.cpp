@@ -1,7 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void printArray(int arr[], int n){
+    cout<<"size of an array is "<<n<<endl;
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }cout<<endl;
+}
+
 bool LinearSearch(int arr[], int n, int key){
+    printArray(arr,n);
     if(n==0){
         return false;
     }
