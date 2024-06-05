@@ -2,6 +2,8 @@
 using namespace std;
 
 int fibbonacci(int n){
+
+    //base condition
     if(n==0){
         return 0;
     }
@@ -9,7 +11,7 @@ int fibbonacci(int n){
     if(n==1){
         return 1;
     }
-    // cout<< n <<" ";
+    // recursive call
     return fibbonacci(n-1) + fibbonacci(n-2);
 }
 int main(){
