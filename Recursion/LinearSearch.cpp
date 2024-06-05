@@ -10,6 +10,7 @@ void printArray(int arr[], int n){
 
 bool LinearSearch(int arr[], int n, int key){
     printArray(arr,n);
+    //base condition
     if(n==0){
         return false;
     }
@@ -17,6 +18,7 @@ bool LinearSearch(int arr[], int n, int key){
         return true;
     }
     else{
+        //recursicve call
         LinearSearch(arr+1,n-1,key);
     }
 
