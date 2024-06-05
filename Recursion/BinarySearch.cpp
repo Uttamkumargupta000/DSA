@@ -9,8 +9,11 @@ void printArray(int arr[], int s, int e){
 }
 
 bool BinarySearch(int arr[], int s, int e, int key){
+
     cout<<endl;
     printArray(arr,s,e);
+
+    //base case
     if(s>e){
         return 0;
     }
@@ -19,7 +22,7 @@ bool BinarySearch(int arr[], int s, int e, int key){
     cout<<"value of arr mid is "<<arr[mid]<<endl;
     if(arr[mid]==key)
         return 1;
-    
+    //recursive call 
     if(arr[mid]<key){
         return BinarySearch(arr,mid+1,e,key);
     }
