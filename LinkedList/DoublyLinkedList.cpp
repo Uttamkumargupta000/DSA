@@ -123,7 +123,10 @@ void deleteNode(int position, Node* &head){
             curr=curr->next;
             count++;
         }
-        
+        curr->prev=NULL;
+        prev->next=curr->next;
+        curr->next=NULL;
+        delete curr;
     }
 }
 
@@ -158,6 +161,10 @@ int main(){
     cout<<"Head : "<<head->data<<endl;
     cout<<"Tail : "<<tail->data<<endl;
 
+    deleteNode(8,head);
+    print(head);
+    cout<<"Head : "<<head->data<<endl;
+    cout<<"Tail : "<<tail->data<<endl;
 
     return 0;
 }
