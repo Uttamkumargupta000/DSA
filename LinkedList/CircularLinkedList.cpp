@@ -106,7 +106,25 @@ bool isCircularList(Node* head){
     return false;
 }
 
+bool detectLoop(Node* head){
 
+    //empty list 
+    if(head == NULL){
+        return false;
+    }
+
+    map<Node*, bool> visited;
+    Node* temp =head;
+
+    while(temp != NULL){
+        if(visited[temp] == true){
+            return true;
+        }
+        visited[temp] = true;
+        temp = temp ->next;
+    }
+    return false;
+}
 
 int main(){
 
@@ -142,6 +160,8 @@ int main(){
     else{
         cout<<"LinkedList is not circular in nature "<<endl;
     }
+
+    
 
     return 0;
 }
