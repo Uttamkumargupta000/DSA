@@ -262,12 +262,12 @@ int main(){
     print(head);
 
     //detection of a circular loop in a linkedlist
-    // if(isCircularList(head)){
-    //     cout<<"LinkedList is circular in nature "<<endl;
-    // }
-    // else{
-    //     cout<<"LinkedList is not circular in nature "<<endl;
-    // }
+    if(isCircularList(head)){
+        cout<<"LinkedList is circular in nature "<<endl;
+    }
+    else{
+        cout<<"LinkedList is not circular in nature "<<endl;
+    }
 
     return 0;
 }
