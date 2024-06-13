@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Node {
@@ -123,6 +123,88 @@ bool isCircularList(Node* head){
     return false;
 }
 
+bool detectLoop(Node* head){
+
+    //empty list 
+    if(head == NULL){
+        return false;
+    }
+
+    map<Node*, bool> visited;
+    Node* temp =head;
+
+    while(temp != NULL){
+        if(visited[temp] == true){
+            cout<<"cycle is present : "<<temp->data<<endl;
+            return true;
+        }
+        visited[temp] = true;
+        temp = temp ->next;
+    }
+    return false;
+}
+
+Node* floyDetectLoop(Node* head){
+
+    if(head== NULL){
+        return NULL;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+    
+    while(slow != NULL && fast != NULL){
+        fast = fast -> next;
+        if(fast != NULL){
+            fast =fast ->next;
+        }
+        slow = slow ->next;
+        
+        if(slow == fast){
+            cout<<"present at : "<<slow->data<<endl;
+            return slow;
+        }
+    }
+    return NULL;
+}
+
+Node* getStartingNode(Node* head){
+
+    //empty node
+    if(head == NULL){
+        return NULL;
+    }
+    Node* intersection = floyDetectLoop(head);
+    if(intersection == NULL){
+        return NULL;
+    }
+    Node* slow = head;
+    while(slow != intersection){
+        slow =slow -> next;
+        intersection = intersection -> next;
+    }
+    return slow;
+}
+
+Node* removeLoop(Node* head){
+
+    //empty list
+    if(head == NULL){
+        return NULL;
+    }
+
+    Node* startLoop = getStartingNode(head);
+    if(startLoop == NULL){
+        return head;
+    }
+    Node* temp = startLoop;
+    while(temp -> next != startLoop){
+        temp = temp -> next;
+    }
+    temp -> next = NULL;
+    return head;
+}
+
 int main(){
 
     //created a new node
@@ -154,18 +236,38 @@ int main(){
     InsertAtPosition(tail,head,6,56);
     print(head);
 
+
+    deleteNode(6,head);
+    print(head);
+
+    tail -> next = head ->next;
     cout<<"Head : "<<head->data<<endl;
     cout<<"Tail : "<<tail->data<<endl;
-
-    // deleteNode(6,head);
     // print(head);
 
-    if(isCircularList(head)){
-        cout<<"LinkedList is circular in nature "<<endl;
+    //detection of loop in a linkedlist
+    if(floyDetectLoop(head) != NULL){
+        cout<<"cycle is present " <<endl;
     }
     else{
-        cout<<"LinkedList is not circular in nature "<<endl;
+        cout<<"cycle is not present "<<endl;
     }
+
+    //beginning of loop in a linkedlist
+    Node* loop = getStartingNode(head);
+    cout<<"loop start at : "<<loop -> data<<endl;
+
+    //remove loop in a linkedlist
+    removeLoop(head);
+    print(head);
+
+    //detection of a circular loop in a linkedlist
+    // if(isCircularList(head)){
+    //     cout<<"LinkedList is circular in nature "<<endl;
+    // }
+    // else{
+    //     cout<<"LinkedList is not circular in nature "<<endl;
+    // }
 
     return 0;
 }
