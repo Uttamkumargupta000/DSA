@@ -60,6 +60,7 @@ class Stack {
 
 int main(){
 
+    //Stack implementation without stl
     Stack st(5);
 
     st.push(22);
