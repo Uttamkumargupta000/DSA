@@ -123,15 +123,63 @@ Node* maxValue(Node* root){
     return temp;
 }
 
+Node* deleteFromBST(Node* root, int val){
+
+    //base case
+    if(root == NULL){
+        return NULL;
+    }
+    if(root -> data == val){
+        // 0 child case
+        if(root -> left == NULL && root -> right == NULL){
+            delete root;
+            return NULL;
+        }
+        // 1 child case 
+        //left subtree
+        if(root -> left != NULL && root -> right == NULL){
+            Node* temp = root -> left;
+            delete root;
+            return temp;
+        }
+        //right subtree
+        if(root -> right != NULL && root -> left == NULL){
+            Node* temp = root -> right;
+            delete root;
+            return temp;
+        }
+        //2 child case
+        if(root -> left != NULL && root -> right != NULL){
+            int mini = minValue(root -> right) -> data;
+            root -> data = mini;
+            root ->right = deleteFromBST(root -> right, mini);
+            return root;
+        }
+    }
+    // value is greater then root -> data
+    else if(root -> data > val){
+        root -> left = deleteFromBST(root -> left , val);
+        return root;
+    }
+    else{
+        root -> right = deleteFromBST(root -> right, val);
+    }
+}
+
 int main(){
 
     Node* root = NULL;
 
+    //insertion in BST
     cout<<"Enter the data to create the BST "<<endl;
     takeInput(root);
 
+    //Traversal of BST
     cout<<"Printing the BST "<<endl;
     levelOrderTraversal(root);
+
+    //deletion in bst
+    root = deleteFromBST(root, 50);
 
     cout<<endl<<"Printing inOrder "<<endl;
     inOrder(root);
@@ -142,8 +190,13 @@ int main(){
     cout<<endl<<"Printing postOrder "<<endl;
     postOrder(root);
 
+    cout<<"Printing the BST "<<endl;
+    levelOrderTraversal(root);
+
+    //max value in BST
     cout<<endl<<"Maximum value of this BST Is : "<<maxValue(root) -> data <<endl;
 
+    //min value in BST
     cout<<endl<<"Minimum value of this BST Is : "<<minValue(root) -> data <<endl;
 
     return 0;
