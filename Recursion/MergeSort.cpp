@@ -43,6 +43,9 @@ void merge(int arr[], int s, int e){
         arr[mainArrayIndex++] = second[Index2++];
     }
 
+    delete []first;
+    delete []second;
+    
 }
 void mergeSort(int arr[], int s, int e){
     
