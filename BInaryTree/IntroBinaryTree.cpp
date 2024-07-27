@@ -270,23 +270,33 @@ int main(){
     levelOrderTraversalReverse(root);
     
 
-    //inorder traversal
-    cout<<endl<<"Inorder traversal is : "<<endl;
-    inOrder(root);
-
     //Preorder traversal
     cout<<endl<<"Preorder traversal is : "<<endl;
     preOrder(root);
 
+
     //postorder traversal
     cout<<endl<<"postorder traversal is : "<<endl;
     postOrder(root); 
+
+
+    //inorder traversal
+    cout<<endl<<"Inorder traversal is : "<<endl;
+    inOrder(root);
 
     //build from level order 
     //1 3 5 7 11 17 -1 -1 -1 -1 -1 -1
     // cout<<endl<<"build from level Order "<<endl;
     // buildFromLevelOrder(root);
     // levelOrderTraversal(root);
+
+
+    int key = 11;
+    root = deleteNode(root, key);
+
+    cout << endl;
+    cout << "Inorder traversal after deletion: " <<endl;
+    inOrder(root);
     
     return 0;
 }
