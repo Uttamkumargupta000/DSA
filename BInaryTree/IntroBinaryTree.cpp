@@ -167,6 +167,20 @@ void buildFromLevelOrder(Node* &root){
     }
 }
 
+void deletedeepestNode(Node* root){
+    if(root == NULL){
+        return;
+    }
+    queue<Node*> q;
+    q.push(root);
+
+    while(!q.empty()){
+        Node* temp = q.front();
+        q.pop();
+
+    }
+}
+
 int main(){
 
     Node* root = NULL;
