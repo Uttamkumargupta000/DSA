@@ -40,6 +40,7 @@ Node* buildTree(Node* root){
 void levelOrderTraversal(Node* root){
     queue<Node*> q;
     q.push(root);
+    //for seprator
     q.push(NULL);
 
     while (!q.empty()){
@@ -49,7 +50,7 @@ void levelOrderTraversal(Node* root){
         // either of level is completed
         if(temp == NULL){
             cout<<endl;
-            //still child nodes exist in the queue 
+            //queue still have some child nodes  
             if(!q.empty()){
                 q.push(NULL);
             }
