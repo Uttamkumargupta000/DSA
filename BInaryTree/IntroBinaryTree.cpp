@@ -167,17 +167,44 @@ void buildFromLevelOrder(Node* &root){
     }
 }
 
-void deletedeepestNode(Node* root){
+void deletedeepestNode(Node* root, Node* key){
+    //base case
     if(root == NULL){
         return;
     }
+
     queue<Node*> q;
     q.push(root);
 
     while(!q.empty()){
         Node* temp = q.front();
         q.pop();
+        //if exist at the front or top element is key 
+        if(temp == key){
+            key = NULL;
+            delete key;
+            return;
+        }
 
+        //right part ke exist then delete it
+        if(temp -> right == key){
+            temp -> right = NULL;
+            delete (key);
+            return ;
+        }
+        else{
+            q.push(temp -> right);
+        }
+
+        //left part me exists then delete it
+        if(temp -> left == key){
+            temp -> left = NULL;
+            delete (key);
+            return ;
+        }
+        else{
+            q.push(temp -> left);
+        }
     }
 }
 
