@@ -208,6 +208,51 @@ void deletedeepestNode(Node* root, Node* key){
     }
 }
 
+Node* deleteNode(Node* root, int key){
+    // base case
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(root -> left == NULL && root -> right == NULL){
+        if(root -> data == key){
+            return NULL;
+        }
+        else{
+            return root;
+        }
+    }
+
+    queue<Node*> q;
+    q.push(root);
+
+    Node* key_node = NULL;
+    Node* temp;
+
+    while(!q.empty()){
+        temp = q.front();
+        q.pop();
+
+        if(temp -> data == key){
+            key_node = temp; 
+        }
+
+        if(temp -> left == NULL){
+            q.push(temp -> left);
+        }
+
+        if(temp -> right == NULL){
+            q.push(temp -> right);
+        }
+    }
+    if (key_node != NULL) {
+        int x = temp -> data;
+        key_node -> data = x;
+        deletedeepestNode(root, temp);
+    }
+    return root;
+}
+
 int main(){
 
     Node* root = NULL;
