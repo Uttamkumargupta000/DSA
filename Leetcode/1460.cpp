@@ -23,9 +23,9 @@ public:
 };
 
 
-// --------------- APPROACH 2 USING STL AND SORTING -------------
+// --------------- APPROACH 2 USING STL AND SORTING  -------------
 
-// TC = O(NlogN)
+// TC = O(NlogN)   
 
 class Solution {
 public:
